@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "82725453658",
+    "firebase_url": "https://smoky-7f713.firebaseio.com",
+    "project_id": "smoky-7f713",
+    "storage_bucket": "smoky-7f713.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:82725453658:android:fd733f8c5b11e157",
+        "android_client_info": {
+          "package_name": "com.yomogi.smoky"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "82725453658-65v9gvhh7mulp6i8qp9pbueli2fsn98s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9bMlsHBxnFvmubovegtq1yQjdcW22yNk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "82725453658-65v9gvhh7mulp6i8qp9pbueli2fsn98s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

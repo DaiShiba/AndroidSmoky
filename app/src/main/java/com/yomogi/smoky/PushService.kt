@@ -13,15 +13,15 @@ import com.google.firebase.messaging.RemoteMessage
 
 class PushService : FirebaseMessagingService() {
 
-    val LogTag = PushService::class.java.simpleName
+    val LOG_TAG = PushService::class.java.simpleName
 
     override fun onMessageReceived(remoteMessage: RemoteMessage?) {
 
         //FCMメッセージの処理
         super.onMessageReceived(remoteMessage)
 
-        Log.d(LogTag, "Title;${remoteMessage?.notification?.title}")
-        Log.d(LogTag,"body;${remoteMessage?.notification?.body}")
+        Log.d(LOG_TAG, "Title;${remoteMessage?.notification?.title}")
+        Log.d(LOG_TAG,"body;${remoteMessage?.notification?.body}")
 
         //Notification
         val intent = Intent(this, MainActivity::class.java)

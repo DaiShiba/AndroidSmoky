@@ -45,4 +45,11 @@ class PushService : FirebaseMessagingService() {
         //通知
         notificationManager.notify(0, notificationBuilder.build())
     }
+
+    override fun onNewToken(token : String?) {
+        Log.d(LOG_TAG, "Refreshed Token: $token")
+
+        //サーバに登録したトークンを送信
+        //sendRegistrationToServer(token)
+    }
 }

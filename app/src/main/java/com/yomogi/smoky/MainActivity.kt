@@ -1,5 +1,6 @@
 package com.yomogi.smoky
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -24,6 +25,16 @@ class MainActivity : AppCompatActivity() {
             Crashlytics.log("TestLog")
         }
         addContentView(crashButton, ViewGroup.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT))
+
+        val moveRealmButton = Button(this)
+        moveRealmButton.text = "Realm確認画面に遷移"
+        moveRealmButton.setOnClickListener {
+            val intent = Intent(this, TrialRealmActivity::class.java)
+            startActivity(intent)
+        }
+        addContentView(moveRealmButton, ViewGroup.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT,
             ViewGroup.LayoutParams.WRAP_CONTENT))
 

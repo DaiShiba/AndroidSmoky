@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import io.realm.Realm
 import io.realm.RealmConfiguration
 import kotlinx.android.synthetic.main.activity_trial_realm.*
+import kotlinx.android.synthetic.main.content_trial_realm.*
 import java.util.*
 
 class TrialRealmActivity : AppCompatActivity() {
@@ -32,28 +33,47 @@ class TrialRealmActivity : AppCompatActivity() {
         Realm.setDefaultConfiguration(config)
         mRealm = Realm.getDefaultInstance()
 
-        val insertButton = Button(this)
+        //Button配置レイアウトの取得
+        val view = content_button
+
+        //Insertボタンの追加
+        //val insertButton = Button(this)
+        val insertButton = findViewById(R.id.button1) as Button
         insertButton.text = "Insert"
         insertButton.setOnClickListener {
             insertRealm("chicken", "mune", 100)
         }
-        addContentView(insertButton, ViewGroup.LayoutParams(
-            ViewGroup.LayoutParams.MATCH_PARENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT))
+//        view.addView(insertButton)
+
+        //FindAll
+        //val findButton = Button(this)
+        val findButton = findViewById(R.id.button2) as Button
+        findButton.text = "Select"
+        findButton.setOnClickListener {
+            findAll()
+        }
+//        view.addView(findButton)
+    }
+
+    private fun findAll() {
+        Log.d(TAG, "findALL Called")
+        val getData = mRealm.where(Item::class.java).findAll()
+        getData.forEach {
+            Log.d(TAG, it.id)
+            Log.d(TAG, it.name)
+            Log.d(TAG, it.kind)
+            Log.d(TAG, it.weight.toString())
+        }
     }
 
     private fun insertRealm(name: String, kind: String, weight: Int) {
+        Log.d(TAG, "insertRealm Called")
         mRealm.executeTransaction {
             var item = mRealm.createObject(Item::class.java, UUID.randomUUID().toString())
             item.name = name
             item.kind = kind
             item.weight = weight
             mRealm.copyToRealm(item)
-        }
-
-        val getData = mRealm.where(Item::class.java).findAll()
-        getData.forEach {
-            Log.d(TAG, it.name)
         }
     }
 }

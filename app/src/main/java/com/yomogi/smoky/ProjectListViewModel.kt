@@ -12,7 +12,7 @@ open class ProjectListViewModel : AndroidViewModel {
     //コンストラクタ
     constructor(application: Application) : super(application)
 
-    //LiveDataを公開する
+    //LiveDataを公開するUIに向けて
     open fun getProjectListObservable() : LiveData<List<ProjectRealm>> {
         return this.projectListObservable
     }

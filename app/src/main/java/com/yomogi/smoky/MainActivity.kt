@@ -4,14 +4,13 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.ViewGroup
 import android.widget.Button
-import android.widget.LinearLayout
 import android.widget.Toast
 import com.crashlytics.android.Crashlytics
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.iid.FirebaseInstanceId
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.content_trial_realm.*
 
 class MainActivity : AppCompatActivity() {
     val TAG = MainActivity::class.java.simpleName
@@ -43,6 +42,13 @@ class MainActivity : AppCompatActivity() {
             startActivity( Intent(this, GithubActivity::class.java))
         }
         topLinear.addView(moveGithubActivity)
+
+        val moveFirebaseActivity = Button(this)
+        moveFirebaseActivity.text = "Firebase検証画面に遷移"
+        moveFirebaseActivity.setOnClickListener {
+            startActivity(Intent(this, FirebaseActivity::class.java))
+        }
+        topLinear.addView(moveFirebaseActivity)
 
         FirebaseInstanceId.getInstance().instanceId
             .addOnCompleteListener(OnCompleteListener { task ->

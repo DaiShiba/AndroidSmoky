@@ -12,40 +12,40 @@ import androidx.lifecycle.ViewModel
 
 open class ProjectViewModel : AndroidViewModel {
 
-    private val projectObservable : LiveData<ProjectRealm>
+    private val projectObservable : LiveData<Project>
     private val projectId : String
 
     //Viewとバインドするためのデータクラス
-    open var project : ObservableField<ProjectRealm> = ObservableField()
+    var project : ObservableField<Project> = ObservableField()
 
     //コンストラクタで継承しているAndroidViewModelにアプリケーションをセット＆ProjectIDをセット
     constructor(application: Application, projectId : String) : super(application){
         this.projectId = projectId
-        projectObservable = ProjectRepository.getInstance().getProjectDetail("", projectId)
+        projectObservable = ProjectRepository.getInstance().getProjectDetail("DaiShiba", projectId)
     }
 
     //リポジトリのレスポンスを取得
-    open fun getObservableProject() : LiveData<ProjectRealm> {
+    open fun getObservableProject() : LiveData<Project> {
         return projectObservable
     }
 
     //プロジェクトのセット
-    open fun setProject(project : ProjectRealm) {
+    open fun setProject(project : Project) {
         this.project.set(project)
     }
-}
 
-open class Factory : ViewModelProvider.NewInstanceFactory {
-    @NonNull private val application : Application
-    private val projectId : String
+    open class Factory : ViewModelProvider.NewInstanceFactory {
+        @NonNull private val application : Application
+        private val projectId : String
 
-    constructor(@NonNull application: Application, projectId: String) {
-        this.application = application
-        this.projectId = projectId
-    }
+        constructor(@NonNull application: Application, projectId: String) {
+            this.application = application
+            this.projectId = projectId
+        }
 
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-
-        return ProjectViewModel(application, projectId) as T
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            @Suppress("UNCHECKED_CAST")
+            return ProjectViewModel(application, projectId) as T
+        }
     }
 }

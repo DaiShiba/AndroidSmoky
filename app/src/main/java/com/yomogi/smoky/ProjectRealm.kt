@@ -9,7 +9,7 @@ open class ProjectRealm(
     @PrimaryKey open var id : Long = 0,
     @Required open var name : String = "",
     @Required open var full_name : String = "",
-    open var owner : User = User(),
+    //open var owner : User = User(),
     open var html_url : String = "",
     open var description : String  = "",
     open var url : String = "",
@@ -33,5 +33,3 @@ open class ProjectRealm(
     open var watchers : Int = 0,
     open var default_branch : String = ""
 ) : RealmObject() {}
-
-class User()

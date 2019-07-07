@@ -6,6 +6,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'io.fabric'
 apply plugin: 'kotlin-kapt'
 apply plugin: "realm-android"
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 28
@@ -56,7 +57,7 @@ dependencies {
 
     //OkHttp・・・Http通信クライアント
     implementation 'com.squareup.okhttp3:okhttp:4.0.0-alpha02'
-    //OkHttp-Intercepter・・・OkHttp周りのログ、キャプチャなど
+    //OkHttp-Interceptor・・・OkHttp周りのログ、キャプチャなど
     implementation "com.squareup.okhttp3:logging-interceptor:3.9.0"
 }
 apply plugin: 'com.google.gms.google-services'

@@ -6,10 +6,12 @@ import android.os.Bundle
 import android.util.Log
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.Toast
 import com.crashlytics.android.Crashlytics
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.iid.FirebaseInstanceId
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     val TAG = MainActivity::class.java.simpleName
@@ -24,9 +26,8 @@ class MainActivity : AppCompatActivity() {
             //Crashlytics.getInstance().crash() // Force a crash
             Crashlytics.log("TestLog")
         }
-        addContentView(crashButton, ViewGroup.LayoutParams(
-            ViewGroup.LayoutParams.MATCH_PARENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT))
+        //KotlinAndroidExtensionでレイアウトで定義しているIDを変数として使用する
+        topLinear.addView(crashButton)
 
         val moveRealmButton = Button(this)
         moveRealmButton.text = "Realm確認画面に遷移"
@@ -34,9 +35,14 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, TrialRealmActivity::class.java)
             startActivity(intent)
         }
-        addContentView(moveRealmButton, ViewGroup.LayoutParams(
-            ViewGroup.LayoutParams.MATCH_PARENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT))
+        topLinear.addView(moveRealmButton)
+
+        val moveGithubActivity = Button(this)
+        moveGithubActivity.text = "GitHub確認画面に遷移"
+        moveGithubActivity.setOnClickListener {
+            startActivity( Intent(this, GithubActivity::class.java))
+        }
+        topLinear.addView(moveGithubActivity)
 
         FirebaseInstanceId.getInstance().instanceId
             .addOnCompleteListener(OnCompleteListener { task ->

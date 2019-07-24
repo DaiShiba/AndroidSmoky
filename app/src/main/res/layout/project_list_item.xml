@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable name="project" type="com.yomogi.smoky.Project"/>
+        <variable name="callback" type="com.yomogi.smoky.ProjectClickCallback"/>
+    </data>
+
+    <androidx.cardview.widget.CardView android:layout_width="match_parent"
+                                       android:layout_height="wrap_content"
+                                       android:orientation="horizontal"
+                                       android:onClick="@{() -> callback.onClick(project)}"
+                                       android:layout_marginStart="16dp"
+                                       android:layout_marginEnd="8dp"
+                                       app:cardUseCompatPadding="true">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:id="@+id/name"
+                      android:contentDescription="@string/project_name"
+                      android:text="@{project.name}"/>
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:id="@+id/language"
+            android:contentDescription="@string/project_language"
+            android:text="@{String.format(@string/language, project.language)}"/>
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:id="@+id/project_watchers"
+            android:contentDescription="@string/project_watchers"
+            android:text="@{String.format(@string/watchers, project.watchers)}"/>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

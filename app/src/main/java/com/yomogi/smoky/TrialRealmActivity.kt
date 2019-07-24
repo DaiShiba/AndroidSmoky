@@ -34,7 +34,7 @@ class TrialRealmActivity : AppCompatActivity() {
         mRealm = Realm.getDefaultInstance()
 
         //Button配置レイアウトの取得
-        val view = content_button
+        //val view = content_button
 
         //Insertボタンの追加
         //val insertButton = Button(this)

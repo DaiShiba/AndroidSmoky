@@ -1,5 +1,6 @@
 package com.yomogi.smoky
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,6 +10,7 @@ import android.widget.Toast
 import com.crashlytics.android.Crashlytics
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.iid.FirebaseInstanceId
+import com.yomogi.smoky.Firebase.FirestoreActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_trial_realm.*
 
@@ -50,6 +52,8 @@ class MainActivity : AppCompatActivity() {
         }
         topLinear.addView(moveFirebaseActivity)
 
+        addButton("Firestore検証画面に遷移",FirestoreActivity())
+
         FirebaseInstanceId.getInstance().instanceId
             .addOnCompleteListener(OnCompleteListener { task ->
                 if(!task.isSuccessful) {
@@ -65,5 +69,15 @@ class MainActivity : AppCompatActivity() {
                 Log.d(TAG,msg)
                 Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
             })
+    }
+
+    //TOP Activityにボタンを追加
+    private fun addButton(buttonText:String,activity: Activity){
+        val button = Button(this)
+        button.text = buttonText
+        button.setOnClickListener{
+            startActivity(Intent(this, activity::class.java))
+        }
+        topLinear.addView(button)
     }
 }

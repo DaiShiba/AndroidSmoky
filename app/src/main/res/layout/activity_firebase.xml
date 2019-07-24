@@ -8,4 +8,53 @@
         tools:context=".FirebaseActivity"
         android:id="@+id/firebasePanel">
 
+    <ImageView
+            android:layout_width="346dp"
+            android:layout_height="118dp" app:srcCompat="@drawable/logo_built_white"
+            android:id="@+id/imageView" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/Authentication" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.421"
+            app:layout_constraintVertical_bias="0.132"/>
+
+    <com.google.android.material.button.MaterialButton
+            android:text="認証確認"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/Authentication" android:layout_marginTop="8dp" app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintVertical_bias="0.227" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginStart="8dp"/>
+
+    <com.google.android.material.button.MaterialButton
+            android:text="FileStore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/FileStore" android:layout_marginTop="8dp"
+            app:layout_constraintVertical_bias="0.174"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"/>
+    <FrameLayout
+            android:layout_width="361dp"
+            android:layout_height="200dp" android:layout_marginTop="8dp"
+            android:id="@+id/input_container"
+            app:layout_constraintTop_toBottomOf="@+id/FileStore" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp">
+    </FrameLayout>
+    <FrameLayout
+            android:layout_width="368dp"
+            android:layout_height="188dp"
+            android:id="@+id/output_container"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/input_container" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+    </FrameLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

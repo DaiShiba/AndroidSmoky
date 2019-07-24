@@ -3,10 +3,12 @@ package com.yomogi.smoky
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import android.widget.TextView
+import com.yomogi.smoky.Firebase.AuthenticationFormFragment
+import com.yomogi.smoky.Firebase.AuthenticationFragment
 import kotlinx.android.synthetic.main.activity_firebase.*
 
+@Suppress("PLUGIN_WARNING")
 class FirebaseActivity : AppCompatActivity() {
 
     @SuppressLint("SetTextI18n")
@@ -18,8 +20,14 @@ class FirebaseActivity : AppCompatActivity() {
         topText.text = "Firebase検証用Activity"
         firebasePanel.addView(topText)
 
-        val AuthenticationButton = Button(this)
-        AuthenticationButton.text = "認証確認"
-        firebasePanel.addView(AuthenticationButton)
+        Authentication.setOnClickListener{
+            val inputFragment = AuthenticationFormFragment.newInstance()
+            supportFragmentManager.beginTransaction().
+                add(R.id.input_container, inputFragment, AuthenticationFragment.TAG).commit()
+
+            val outputFragment = AuthenticationFragment.newInstance()
+            supportFragmentManager.beginTransaction().
+                add(R.id.output_container, outputFragment, AuthenticationFragment.TAG).commit()
+        }
     }
 }
